@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Login Form (Default View) -->
+        <div id="loginForm" class="form-section">
+            <div class="form-header text-center">
+                <h1 class="form-title">Logs Inn</h1>
+                <p class="form-subtitle">Sign in to your account</p>
+            </div>
+
+            <form class="form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" required class="form-input"
+                        placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required class="password-input"
+                            placeholder="Enter your password">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox">
+                        <span class="checkbox-text">Remember me</span>
+                    </label>
+                    <button type="button" onclick="showForgotPassword()" class="link-button">
+                        Forgot password?
+                    </button>
+                </div>
+
+                <button type="submit" onclick="handleLogin(event)" class="btn btn-primary">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="text-center">
+                <p class="footer-text">Don't have an account?
+                    <button onclick="showSignUp()" class="link-button medium">
+                        Sign up
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signupForm" class="form-section hidden">
+            <div class="form-header text-center">
+                <h1 class="form-title">Create Account</h1>
+                <p class="form-subtitle">Join us today</p>
+            </div>
+
+            <form class="form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required class="form-input"
+                        placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail" class="form-label">Email Address</label>
+                    <input type="email" id="signupEmail" name="email" required class="form-input"
+                        placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="signupPassword" name="password" required class="password-input"
+                            placeholder="Create a password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <div class="password-container">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required
+                            class="password-input" placeholder="Confirm your password">
+                    </div>
+                </div>
+
+                <button type="submit" onclick="handleSignUp(event)" class="btn btn-success">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="text-center">
+                <p class="footer-text">Already have an account?
+                    <button onclick="showLogin()" class="link-button medium">
+                        Sign in
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgotForm" class="form-section hidden">
+            <div class="form-header text-center">
+                <h1 class="form-title">Reset Password</h1>
+                <p class="form-subtitle">Enter your email to receive reset instructions</p>
+            </div>
+
+            <form class="form">
+                <div class="form-group">
+                    <label for="resetEmail" class="form-label">Email Address</label>
+                    <input type="email" id="resetEmail" name="email" required class="form-input"
+                        placeholder="Enter your email">
+                </div>
+
+                <button type="submit" onclick="handleForgotPassword(event)" class="btn btn-purple">
+                    Send Reset Link
+                </button>
+            </form>
+
+            <div class="text-center">
+                <p class="footer-text">Remember your password?
+                    <button onclick="showLogin()" class="link-button medium">
+                        Back to login
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="form-section hidden text-center">
+            <div class="success-icon">✅</div>
+            <div>
+                <h1 class="form-title">Success!</h1>
+                <p id="successText" class="success-text"></p>
+                <button onclick="showLogin()" class="btn btn-back">
+                    Back to Login
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('forgotForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+        }
+
+        function showSignUp() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.remove('hidden');
+            document.getElementById('forgotForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+        }
+
+        function showForgotPassword() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('forgotForm').classList.remove('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+        }
+
+        function showSuccess(message) {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('forgotForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            document.getElementById('successText').textContent = message;
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                showSuccess(`Welcome back! Login successful for ${email}`);
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function handleSignUp(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!fullName || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            showSuccess(`Account created successfully for ${fullName}! You can now sign in.`);
+        }
+
+        function handleForgotPassword(event) {
+            event.preventDefault();
+            const email = document.getElementById('resetEmail').value;
+
+            if (email) {
+                showSuccess(`Password reset instructions have been sent to ${email}`);
+            } else {
+                alert('Please enter your email address');
+            }
+        }
+    </script>
+</body>
+
+</html>

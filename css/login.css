@@ -1,0 +1,221 @@
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     background-color: #1f2a37;
+     color: #ffffff;
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 16px;
+     margin: 0;
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+ }
+
+ .container {
+     background-color: #2b3646;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+     border-radius: 16px;
+     padding: 32px;
+     width: 100%;
+     max-width: 400px;
+ }
+
+ .form-section {
+     display: block;
+ }
+
+ .form-section.hidden {
+     display: none;
+ }
+
+ .text-center {
+     text-align: center;
+ }
+
+ .form-header {
+     margin-bottom: 24px;
+ }
+
+ .form-title {
+     color: #ffffff;
+     font-size: 30px;
+     font-weight: bold;
+     margin: 0 0 8px 0;
+ }
+
+ .form-subtitle {
+     color: #ffffff;
+     margin: 0;
+ }
+
+ .form {
+     margin-bottom: 24px;
+ }
+
+ .form-group {
+     margin-bottom: 16px;
+ }
+
+ .form-label {
+     color: #ffffff;
+     display: block;
+     font-size: 14px;
+     font-weight: 500;
+     margin-bottom: 8px;
+ }
+
+ .form-input {
+     color: #000000;
+     width: 100%;
+     padding: 12px 16px;
+     border: 1px solid #d1d5db;
+     border-radius: 8px;
+     font-size: 16px;
+     transition: all 0.2s;
+ }
+
+ .form-input:focus {
+     outline: 2px solid #3b82f6;
+     border-color: transparent;
+ }
+
+ .password-container {
+     position: relative;
+ }
+
+ .password-input {
+     color: #000000;
+     width: 100%;
+     padding: 12px 12px 12px 12px;
+     border: 1px solid #d1d5db;
+     border-radius: 8px;
+     font-size: 16px;
+     transition: all 0.2s;
+ }
+
+ .password-input:focus {
+     outline: 2px solid #3b82f6;
+     border-color: transparent;
+ }
+
+ .password-toggle {
+     position: absolute;
+     right: 12px;
+     top: 50%;
+     transform: translateY(-50%);
+     background: none;
+     border: none;
+     color: #6b7280;
+     cursor: pointer;
+     font-size: 16px;
+     transition: color 0.2s;
+ }
+
+ .password-toggle:hover {
+     color: #374151;
+ }
+
+ .form-row {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-bottom: 16px;
+ }
+
+ .checkbox-label {
+     display: flex;
+     align-items: center;
+ }
+
+ .checkbox {
+     margin-right: 8px;
+ }
+
+ .checkbox-text {
+     color: #ffffff;
+     font-size: 14px;
+ }
+
+ .link-button {
+     background: none;
+     border: none;
+     color: #fbbf24;
+     font-size: 14px;
+     cursor: pointer;
+     transition: color 0.2s;
+ }
+
+ .link-button:hover {
+     color: #d97706;
+ }
+
+ .link-button.medium {
+     font-weight: 500;
+ }
+
+ .btn {
+     width: 100%;
+     padding: 12px 16px;
+     border: none;
+     border-radius: 8px;
+     font-size: 16px;
+     font-weight: 500;
+     cursor: pointer;
+     transition: background-color 0.2s;
+ }
+
+ .btn-primary {
+     background-color: #2563eb;
+     color: white;
+ }
+
+ .btn-primary:hover {
+     background-color: #1d4ed8;
+ }
+
+ .btn-success {
+     background-color: #16a34a;
+     color: white;
+ }
+
+ .btn-success:hover {
+     background-color: #15803d;
+ }
+
+ .btn-purple {
+     background-color: #9333ea;
+     color: white;
+ }
+
+ .btn-purple:hover {
+     background-color: #7c3aed;
+ }
+
+ .btn-back {
+     background-color: #2563eb;
+     color: white;
+     padding: 12px 24px;
+     width: auto;
+ }
+
+ .btn-back:hover {
+     background-color: #1d4ed8;
+ }
+
+ .footer-text {
+     color: #ffffff;
+     margin: 0;
+ }
+
+ .success-icon {
+     font-size: 60px;
+     margin-bottom: 24px;
+ }
+
+ .success-text {
+     color: #ffffff;
+     margin: 0 0 24px 0;
+ }
